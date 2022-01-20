@@ -2,6 +2,6 @@
 
 <%= form_for :imc, url: url_for(controller: 'imc', action: 'calculate'), method: :post do |f| %>
   <%= f.file_field :file %>
-  <br>
+
   <%= f.submit 'Enviar' %>
 <% end %>

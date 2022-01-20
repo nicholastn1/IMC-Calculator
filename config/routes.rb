@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root to: 'imc#index'
+
   get 'imc/index'
   get 'imc/result'
   post 'imc/calculate'

@@ -27,6 +27,10 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+# It provides an API for parsing JSON from text as well as generating JSON text from arbitrary Ruby objects.
+gem 'json'
+# A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard. Read more: https://github.com/jwt/ruby-jwt
+gem 'jwt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

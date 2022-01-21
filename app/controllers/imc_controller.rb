@@ -10,33 +10,32 @@ class ImcController < ApplicationController
   end
 
   def calculate
-    file = File.read(params[:imc][:file].tempfile.path, exp: (Time.now + 2.weeks).to_i)
-    data_hash = JSON.parse(file)
+    if params[:imc].present?
+      file = File.read(params[:imc][:file].tempfile.path, exp: (Time.now + 2.weeks).to_i)
+      data_hash = JSON.parse(file)
 
-    @height = data_hash["height"]
-    @weight = data_hash["weight"]
+      @height = data_hash["height"]
+      @weight = data_hash["weight"]
 
-    if @height.present? && @weight.present?
       @imc = (@weight.to_f/(@height * @height)).round(2)
-
-      token = JWT.encode(
-        data_hash,
-        HMAC_SECRET,
-        ALGORITHM
-      )
-
-      decoded_token = JWT.decode(token, HMAC_SECRET, false, :ALGORITHM => ALGORITHM)
-
-      if decoded_token[0] == data_hash
-        classification_return @imc
-        render json: JSON.pretty_generate(:imc => @imc, :classification => @classification_message, :obesity => @obesity)
-      else
-        raise Exception.new "Invalid access token."
-      end
-
-    else
-      raise Exception.new "Submit a valid file."
     end
+
+    if @imc.present? && athentication_token(data_hash)
+      classification_return @imc
+    end
+
+    byebug
+    render json: JSON.pretty_generate(:imc => @imc, :classification => @classification_message, :obesity => @obesity)
+  end
+
+  def athentication_token data_hash
+    token = JWT.encode(
+      data_hash,
+      HMAC_SECRET,
+      ALGORITHM
+    )
+
+    decoded_token = JWT.decode(token, HMAC_SECRET, false, :ALGORITHM => ALGORITHM)
   end
 
   def classification_return imc

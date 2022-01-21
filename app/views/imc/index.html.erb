@@ -1,7 +1,8 @@
-<h2>Calculate your IMC right here!</h2>
-
-<%= form_for :imc, url: url_for(controller: 'imc', action: 'calculate'), method: :post do |f| %>
-  <%= f.file_field :file %>
-
-  <%= f.submit 'Enviar' %>
-<% end %>
+<h2 class="d-flex justify-content-center">Calculate your IMC right here!</h2>
+<div class="d-flex justify-content-center">
+  <%= form_for :imc, url: url_for(controller: 'imc', action: 'calculate'), method: :post do |f| %>
+    <%= f.file_field :file, class:"form-control" %>
+    <br>
+    <%= f.submit 'Enviar', class:"btn btn-success position-absolute top-20 start-50 translate-middle"%>
+  <% end %>
+</div>

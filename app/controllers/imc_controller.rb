@@ -24,7 +24,6 @@ class ImcController < ApplicationController
       classification_return @imc
     end
 
-    byebug
     render json: JSON.pretty_generate(:imc => @imc, :classification => @classification_message, :obesity => @obesity)
   end
 

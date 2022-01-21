@@ -1,24 +1,24 @@
-# README
+# IMC Calculator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It's an IMC Calculator.
 
 Things you may want to cover:
 
-* Ruby version
+* Can you calculate entering with an ```.json``` file.
+* This file need that format:
+```json
+{
+  "height": 1.70,
+  "weight": 76
+}
+```
+<details><summary>More about me!</summary>
+<p>
 
-* System dependencies
+#### Can contact me:
 
-* Configuration
+www.linkedin.com/in/nicholastn
+  
+nicholasnogueira12@gmail.com
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+</details></p>
